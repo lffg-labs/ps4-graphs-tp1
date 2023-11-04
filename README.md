@@ -15,3 +15,9 @@ bazel run //apps:arbok_cli -- \
 
 É necessário instalar o [Bazel](https://bazel.build/). Sugerimos a utilização da
 ferramenta [bazelisk](https://github.com/bazelbuild/bazelisk).
+
+Se você está no Windows, crie um arquivo `.bazelrc-win` com o seguinte conteúdo:
+
+```
+build --cxxopt='/std:c++20'
+```
