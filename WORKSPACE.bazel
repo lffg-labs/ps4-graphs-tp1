@@ -1,0 +1,15 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# As of 2023-11-04
+BOOST_COMMIT = "d5d2549b6cfe8946d133831f99746b1e9f595abf"
+
+http_archive(
+    name = "com_github_nelhage_rules_boost",
+    url = "https://github.com/nelhage/rules_boost/archive/%s.tar.gz" % BOOST_COMMIT,
+    strip_prefix = "rules_boost-%s" % BOOST_COMMIT,
+    sha256 = "7346400bdfdaed233ccef434a5c7ab84e7613dd1cff8ec1f845e36c18a553a5b",
+)
+
+load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+boost_deps()

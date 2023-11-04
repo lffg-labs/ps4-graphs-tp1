@@ -1,0 +1,15 @@
+cc_library(
+    name = "atofigh",
+    srcs = [
+        "atofigh.cpp",
+        "edmonds_optimum_branching_impl.hpp",
+    ],
+    hdrs = ["atofigh.h"],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@boost//:concept_check",
+        "@boost//:foreach",
+        "@boost//:graph",
+        "@boost//:property_map",
+    ],
+)

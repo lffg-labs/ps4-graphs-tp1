@@ -11,6 +11,7 @@
 #include "algos/gabow/gabow.h" // ok
 // #include <arbok/others/lemon.h>
 // #include <arbok/others/atofigh.h>
+#include "algos/atofigh/atofigh.h"
 // #include <arbok/others/felerius.h>
 // #include <arbok/others/spaghetti.h>
 // #include <arbok/others/yosupo.h>
@@ -212,7 +213,7 @@ int main(int argc, char* argv[]) {
     // else if(algo=="hollow") run<arbok::TarjanHollow>(args);
     else if(algo=="gabow") run<arbok::Gabow>(args);
     // else if(algo=="lemon") run<arbok::Lemon>(args);
-    // else if(algo=="atofigh") run<arbok::Atofigh>(args);
+    else if(algo=="atofigh") run<arbok::Atofigh>(args);
     // else if(algo=="felerius") run<arbok::Felerius>(args);
     // else if(algo=="spaghetti") run<arbok::Spaghetti>(args);
     // else if(algo=="yosupo") run<arbok::Yosupo>(args);
