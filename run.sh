@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-algos=("atofigh" "gabow")
+algos=("atofigh" "gabow" "felerius")
 target="//apps:arbok_cli"
 
 [ $# -eq 0 ] && echo "error: missing argument with input file" && exit 1

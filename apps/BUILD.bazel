@@ -4,6 +4,7 @@ cc_binary(
     deps = [
         "//algos/atofigh",
         "//algos/gabow",
+        "//algos/tarjan:felerius",
         "//algos/utils",
     ],
 )
