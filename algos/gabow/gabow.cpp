@@ -3,6 +3,7 @@
 #include "algos/gabow/gabow.h"
 
 #include <iostream>
+#include <algorithm>
 #include <cassert>
 
 using namespace arbok;
