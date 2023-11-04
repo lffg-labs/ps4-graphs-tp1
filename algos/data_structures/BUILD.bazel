@@ -1,0 +1,22 @@
+cc_library(
+    name = "compressed_tree",
+    srcs = ["compressed_tree.inl"],
+    hdrs = [
+        "compressed_tree.h",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+# cc_library(
+#     name = "dsu",
+#     hdrs = ["dsu.h"],
+#     srcs = ["dsu.cpp"],
+#     visibility = ["//visibility:public"],
+# )
+
+# cc_library(
+#     name = "treap",
+#     hdrs = ["treap.h"],
+#     srcs = ["treap.cpp"],
+#     visibility = ["//visibility:public"],
+# )

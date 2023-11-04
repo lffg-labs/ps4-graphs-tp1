@@ -1,0 +1,15 @@
+cc_library(
+    name = "gabow",
+    hdrs = ["gabow.h"],
+    srcs = ["gabow.cpp"],
+    visibility = ["//visibility:public"],
+    deps = [":active_forest"],
+)
+
+cc_library(
+    name = "active_forest",
+    hdrs = ["active_forest.h"],
+    srcs = ["active_forest.cpp"],
+    visibility = ["//visibility:public"],
+    deps = ["//algos/data_structures:compressed_tree"],
+)
