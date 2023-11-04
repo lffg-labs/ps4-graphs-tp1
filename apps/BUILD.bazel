@@ -1,0 +1,8 @@
+cc_binary(
+    name = "arbok_cli",
+    srcs = ["arbok-cli.cpp"],
+    deps = [
+        "//algos/gabow",
+        "//algos/utils",
+    ],
+)
