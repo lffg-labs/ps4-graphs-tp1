@@ -7,7 +7,7 @@ target="//apps:arbok_cli"
 input="$(realpath "$1")"
 echo "input is ($input)"
 
-tmp_dir="${PS4_GRAPHS_OUT_DIR:-$(mktemp -d)}"
+tmp_dir=$(realpath "${PS4_GRAPHS_OUT_DIR:-$(mktemp -d)}")
 echo "tmp dir is ($tmp_dir)"
 
 echo "building cli..."
@@ -16,11 +16,11 @@ bazel build "$target" || exit 1
 program="$(bazel cquery --output=files "$target" 2>/dev/null)"
 
 for algo in "${algos[@]}"; do
-    out_file="$tmp_dir/$algo.out"
+    out_file="$tmp_dir/$(basename "$input")_$algo.out"
 
     echo "running ($algo)..."
     set -x
-    "$program" -algo "$algo" -input "$input" -outfile "$out_file"
+    "$program" -algo "$algo" -input "$input" -outfile "$out_file" -giantCC 1
     status="$?"
     set +x
 
