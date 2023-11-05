@@ -1,9 +1,46 @@
+# Sobre o medidor
+
+O programa responsável por invocar a CLI disponibilizada no repositório
+[`chistopher/arbok`][arbok] foi codificado na linguagem de programação [Rust].
+Sua interface é simples e utilizada por nós para executar um conjunto de testes
+para uma lista de algoritmos. Nas seções a seguir alguns exemplos de uso estão
+em demonstração.
+
+Como os grafos utilizados durante os testes são grandes, e os algoritmos
+disponibilizados no repositório [`chistopher/arbok`][arbok] são programados de
+modo a tirar vantagem de um único core por execução, consideramos oportuno fazer
+com que nosso medidor fosse programado de modo a executar diversos testes em
+paralelo, de modo a utilizar totalmente os recursos computacionais disponíveis
+para otimizar o tempo de execução.
+
+A excelente biblioteca [Rayon] foi utilizada para a criação de um programa para
+medir as performances de modo paralelo. A interface da biblioteca, que garante
+paralelismo livre de _race conditions_, é extremamente simples para uso pois
+fornece uma interface similar a de iteradores seriais, que são então
+paralelizados utilizando uma abordagem de work-stealing. [Mais
+detalhes.][rayon-more]
+
+[Rust]: https://rust-lang.org/
+[Rayon]: https://github.com/rayon-rs/rayon
+[rayon-more]:
+  https://smallcultfollowing.com/babysteps/blog/2015/12/18/rayon-data-parallelism-in-rust/
+
 # Girgs
 
 Não utilizamos o de Girgs completo porque o tamanho das entradas eram diferente
 entre eles.
 
 Utilizamos os conjuntos Girgs-200, Girgs-400, Girgs-600 e Girgs-800.
+
+Os grafos de testes foram utilizados pelo gerador disponibilizado no repositório
+[`chistopher/girgs`][girgs-gen] e posteriormente processados pelos scripts do
+repositório [`chistopher/arbok`][arbok] ([permalink para instruções no
+Makefile][make-perm]).
+
+[girgs-gen]: https://github.com/chistopher/girgs
+[arbok]: https://github.com/chistopher/arbok
+[make-perm]:
+  https://github.com/chistopher/arbok/blob/d5ccef7667a11af110de772f3aaaea9d5e17616f/data/Makefile#L42-L44
 
 Comando utilizado:
 
