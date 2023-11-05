@@ -11,6 +11,7 @@ use rayon::prelude::*;
 
 use clap::{Parser, ValueEnum};
 use color_eyre::Result;
+use serde::Serialize;
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -47,7 +48,8 @@ fn main() -> Result<()> {
         all_timings.insert(test_name, algos_map);
     }
 
-    println!("{all_timings:#?}");
+    let json = serde_json::to_string_pretty(&all_timings)?;
+    println!("{json}");
 
     Ok(())
 }
@@ -109,7 +111,7 @@ fn suite_input_files(suite_dir: &Path) -> Result<Vec<PathBuf>> {
     dir.into_iter().map(|entry| Ok(entry?.path())).collect()
 }
 
-#[derive(ValueEnum, Copy, Clone, Debug, PartialEq, Eq, Hash)]
+#[derive(ValueEnum, Copy, Clone, Debug, PartialEq, Eq, Hash, Serialize)]
 enum Algorithm {
     Atofigh,
     Gabow,
