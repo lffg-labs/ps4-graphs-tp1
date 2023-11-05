@@ -1,3 +1,5 @@
 bazel-*
 .bazelrc-win
 .vs
+target
+test-*

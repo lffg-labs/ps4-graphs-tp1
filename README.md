@@ -6,7 +6,7 @@ algumas alterações para facilitara compilação do projeto. Mais especificamen
 a troca do build system CMake por Bazel e a remoção dos _sources_ desnecessários
 para o nosso trabalho, como a suite _lemon_.
 
-Executar:
+### Execução básica
 
 ```sh
 bazel run //apps:arbok_cli -- \
@@ -20,4 +20,28 @@ Se você está no Windows, crie um arquivo `.bazelrc-win` com o seguinte conteú
 
 ```
 build --cxxopt='/std:c++20'
+```
+
+### Medição de performance
+
+Compilar o medidor.
+
+```sh
+cargo build -p measure --release
+# Binário estará em ./target/release/measure
+```
+
+Compilar a CLI:
+
+```sh
+bazel build -c opt //apps:arbok_cli
+```
+
+Executar o medidor, por exemplo:
+
+```sh
+./target/release/measure \
+  -t test-girgs \
+  --program-path="$(bazel cquery -c opt --output=files //apps:arbok_cli 2> /dev/null)" \
+  -a atofigh -a gabow -a felerius 1> out.txt
 ```
