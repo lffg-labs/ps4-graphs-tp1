@@ -1,37 +1,68 @@
+# Girgs
+
 Não utilizamos o de Girgs completo porque o tamanho das entradas eram diferente
 entre eles.
 
-Lista de arquivos utilizados, para cada um dos algoritmos.
+Utilizamos os conjuntos Girgs-200, Girgs-400, Girgs-600 e Girgs-800.
 
-```txt
-girg0200_0.soap
-girg0200_1.soap
-girg0200_2.soap
-girg0200_3.soap
-girg0200_4.soap
-girg0200_5.soap
-girg0200_6.soap
-girg0200_7.soap
-girg0200_8.soap
-girg0200_9.soap
+Comando utilizado:
+
+```bash
+$ cargo build -p measure --release
+$ bazel build -c opt //apps:arbok_cli
+$ ./target/release/measure \
+  -t test-girgs/girgs-0200 -t test-girgs/girgs-0400 -t test-girgs/girgs-0600 -t test-girgs/girgs-0800 \
+  --program-path="bazel-out/darwin-opt/bin/apps/arbok_cli" \
+  -a atofigh -a gabow -a felerius 1> test-girgs-out.json
 ```
 
 Resultados da medição, em microssegundos.
 
 ```json
 {
-  "test-girgs": {
+  "girgs-0800": {
+    "Atofigh": [13084705, 11801264, 11433748, 13211209, 13336448],
+    "Felerius": [6430860, 7433342, 6722569, 6896307, 6349473],
+    "Gabow": [7724668, 7690026, 7220417, 7709098, 7315238]
+  },
+  "girgs-0400": {
     "Gabow": [
-      1453721, 1528970, 1558078, 1513769, 1587478, 1528953, 1491201, 592796,
-      1456038, 1525485
+      3710436, 3794897, 4346602, 3703193, 3738638, 3714605, 3683849, 4108895
     ],
     "Felerius": [
-      1448233, 1177558, 1146648, 1504879, 1186484, 1494301, 1173512, 1461723,
-      819750, 1256507
+      4622312, 4638410, 3406063, 4627250, 4670426, 4666088, 4713675, 3702714
     ],
     "Atofigh": [
-      995585, 5869786, 6300143, 3360654, 6481609, 6497499, 6510588, 6567574,
-      6331206, 6502018
+      10464015, 10271334, 7615494, 10581804, 10502407, 10465151, 10495880,
+      8995430
+    ]
+  },
+  "girgs-0600": {
+    "Atofigh": [
+      12646490, 10666011, 15164340, 15152403, 14449166, 14967886, 14301485,
+      11514079, 15277011, 14332798
+    ],
+    "Felerius": [
+      5740997, 5740197, 6126164, 6137163, 6131213, 6157212, 5210221, 5730719,
+      6157119, 6098937
+    ],
+    "Gabow": [
+      7844752, 7817540, 5728694, 7851793, 5598417, 8014141, 5778602, 7734299,
+      7966652, 5576363
+    ]
+  },
+  "girgs-0200": {
+    "Atofigh": [
+      872886, 5372307, 5779832, 5979841, 5039225, 3453434, 5937864, 6050343,
+      5425711, 5103444
+    ],
+    "Felerius": [
+      1525803, 888796, 1403541, 1538864, 1322134, 1526688, 1055309, 1537072,
+      1336697, 1141491
+    ],
+    "Gabow": [
+      1634798, 1545453, 1681981, 1625870, 1630674, 1423675, 1547975, 651278,
+      1559958, 1631740
     ]
   }
 }
